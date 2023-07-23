@@ -1,0 +1,20 @@
+{
+  "name": "quadviewblog",
+  "version": "1.0.0",
+  "description": "blog package",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/solowon27/QuadViewBlog.git"
+  },
+  "author": "solomon T",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/solowon27/QuadViewBlog/issues"
+  },
+  "homepage": "https://github.com/solowon27/QuadViewBlog#readme"
+}
