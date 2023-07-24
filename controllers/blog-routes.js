@@ -17,11 +17,7 @@ router.get('/', async (req, res) => {
 
 router.get('/dashboard', async (req, res) => {
   try {
-    const blogPosts = await Blogs.findAll({
-      where: {
-        user_id: req.session.user_id,
-      },
-    });
+    const blogPosts = await Blogs.findAll();
     const blogs = blogPosts.map((blog) => blog.get({ plain: true }));
     res.render('dashboard', { blogs, 
       logged_in: req.session.logged_in,
@@ -81,3 +77,4 @@ router.delete('/blogs/:id', async (req, res) => {
   }
 });
 
+module.exports = router;
