@@ -1,49 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quadview Blog - Login</title>
-  <link rel="stylesheet" href="../public/css/style.css"> 
-<body>
-  <header>
-    <h2>Login to Quadview Blog</h2>
-    <nav>
-      <ul>
-        <li><a href="/" id="homepageLink">Home</a></li>
-        <li><a href="/dashboard" id="dashboardLink">Dashboard</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <form id="signinForm" action="/login" method="POST">
-      <div>
-        <label for="signinUsername">Username:</label>
-        <input type="text" id="signinUsername" name="username" required>
+<div class="row justify-space-between-md">
+  <div class="login-card">
+    <h2 class="page-title">Login</h2>
+    <form class="form login-form">
+      <div class="form-group">
+        <label for="email-login">Email:</label>
+        <input class="form-input" type="text" name="email" id="email-login" />
       </div>
-      <div>
-        <label for="signinPassword">Password:</label>
-        <input type="password" id="signinPassword" name="password" required>
+      <div class="form-group">
+        <label for="password-login">Password:</label>
+        <input class="form-input" type="password" name="password" id="password-login" />
       </div>
-      <button type="submit">Sign In</button>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">login</button>
+      </div>
     </form>
-    <p>Don't have an account? <a href="#" id="signupLink">Sign up here</a></p>
-    <div id="signupFormContainer" style="display: none;">
-      <h2>Sign Up</h2>
-      <form id="signupForm" action="/signup" method="POST">
-        <input type="text" id="signupName" placeholder="Name" required>
-        <input type="email" id="signupUsername" placeholder="email" required>
-        <input type="password" id="signupPassword" placeholder="Password" required>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
-  </main>
+  </div>
+  <div class="login-card">
+    <h2 class="page-title">Signup</h2>
+    <form class="form signup-form" action="/signup" method="POST">
+      <div class="form-group">
+        <label for="username-signup">Username:</label>
+        <input class="form-input" type="text" name="username"  id="username-signup" />
+      </div>
+      <div class="form-group">
+        <label for="email-signup">Email:</label>
+        <input class="form-input" type="text" name="email" id="email-signup" />
+      </div>
+      <div class="form-group">
+        <label for="password-signup">Password:</label>
+        <input class="form-input" type="password" name="password" id="password-signup" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">signup</button>
+      </div>
+    </form>
+  </div>
+</div>
 
-  <footer>
-    <p>&copy; {{ year }} QuadView Blog. All rights reserved.</p>
-  </footer>
-
-  <script src="/js/login.js"></script> <!-- Use an absolute path for the script -->
-</body>
-</html>
+<script src="../public/js/index.js"></script>

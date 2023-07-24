@@ -1,24 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QuadView Blog</title>
-<link rel="stylesheet" href="/public/css/style.css">
-
+  <link rel="stylesheet" href="/public/css/style.css"> 
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="/" id="homepageLink">Homepage</a></li>
-      <li><a href="/dashboard" id="dashboardLink">Dashboard</a></li>
-      <li><a href="/login" id="login">login</a></li>
-    </ul>
-  </nav>
-{{{body}}}
-
-<script src="/js/index.js"></script>
-{{#if loggedIn}}
-<script src="/js/logout.js"></script>
-{{/if}}
+    <nav>
+      <ul>
+        <li><a href="/" id="homepageLink">Home</a></li>
+        <li><a href="/dashboard" id="dashboardLink">Dashboard</a></li>
+        {{#if loggedIn}}
+        <li><a href="/logout" id="logoutLink">Logout</a></li>
+        {{else}}
+        <li><a href="/login" id="loginLink">Login</a></li>
+        {{/if}}
+      </ul>
+    </nav>
   
+  {{{body}}}
+
+  <footer>
+    <p>&copy; {{ year }} QuadView Blog. All rights reserved.</p>
+  </footer>
+
+  <script src="/js/index.js"></script>
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
 </html>
