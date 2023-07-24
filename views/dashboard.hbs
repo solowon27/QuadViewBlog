@@ -1,59 +1,15 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quadview Blog</title>
-  <link rel="stylesheet" href="../public/css/style.css">  
-</head>
-<body>
-  <header>
-    <h2>Welcome to Our Blog</h2>
-    <nav>
-      <ul>
-        <li><a href="#" id="homepageLink">Home</a></li>
-        <li><a href="#" id="dashboardLink">Dashboard</a></li> <!-- Add other navigation links and sign-out button if applicable -->
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section id="homepage">
-      <h2>Welcome to Our Blog</h2>
-     <ul id="blogPosts">
-        {{#each blogPosts}}
-          <li><a href="/blog/{{id}}">{{title}}</a></li>
-        {{/each}}
-      </ul>
-    </section>
-
-    <section id="dashboard" style="display: none;">
-      <h2>Dashboard</h2>
-        <ul id="userBlogPosts">
-        {{#each blogPosts}}
-          <li><a href="/blog/{{id}}">{{title}}</a></li>
-        {{/each}}
-      </ul>
-    </section>
-
-    <section id="blogPostView" style="display: none;">
-      <h2 id="postTitle"></h2>
-      <p id="postContents"></p>
-      <p>Posted by <span id="postCreator"></span> on <span id="postDate"></span></p>
-
-      <h3>Comments</h3>
-      <ul id="comments">
-        {{#each comments}}
-          <li>{{this}}</li>
-        {{/each}}
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2023 QuadView Blog. All rights reserved.</p>
-  </footer>
-
-  <script src="../public/js/index.js"></script>
-</body>
-</html>
+<!-- views/dashboard.hbs -->
+{{#if loggedIn}}
+  <h1>Your Dashboard</h1>
+  <ul id="userBlogPosts">
+    {{#each blogPosts}}
+    <li>
+      <a href="/blogs/{{id}}">{{title}}</a>
+    </li>
+    {{/each}}
+  </ul>
+  <script src="/js/logout.js"></script>
+{{else}}
+  <h1>Please Log In to Access Your Dashboard</h1>
+  <p><a href="/login">Login</a> or <a href="/signup">Sign up</a> to view your dashboard.</p>
+{{/if}}
