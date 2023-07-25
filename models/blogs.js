@@ -1,4 +1,3 @@
-// models/blogs.js
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -17,16 +16,17 @@ Blogs.init(
       allowNull: false,
     },
     content: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    creator: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: '', 
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
     },
   },
   {
