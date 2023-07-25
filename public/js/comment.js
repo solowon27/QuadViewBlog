@@ -2,12 +2,12 @@
 document.getElementById('commentForm').addEventListener('submit', async (event) => {
     event.preventDefault();
     const commentText = document.getElementById('commentText').value.trim();
-    const blogsId = '{{ blogs.id }}';
+    const blogId = '{{ blog.id }}';
   
     if (commentText) {
-      const response = await fetch('/api/comments', {
+      const response = await fetch('/comments', {
         method: 'POST',
-        body: JSON.stringify({ commentText, blogsId }),
+        body: JSON.stringify({ commentText, blogId }),
         headers: { 'Content-Type': 'application/json' },
       });
   
