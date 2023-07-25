@@ -8,27 +8,43 @@
 </head>
 <body>
   <header>
-    <h2>Quadview Blog - {{ blog.title }}</h2>
+    <h2>Quadview Blog -</h2>
   </header>
 
   <main>
     <h1>{{ blog.title }}</h1>
-    <p>{{ blog.contents }}</p>
-    <p>Created by: {{ blog.creator }}</p>
-    <p>Date: {{ blog.date }}</p>
+    <p>{{ blog.content }}</p>
+    <p id="creator">Created by: {{ blog.creator }}</p>
+    <p id="date">Date: {{ blog.date }}</p>
 
     <h3>Comments</h3>
     <ul id="comments">
       {{#each blog.comments}}
-      <li>{{this}}</li>
+      <li>{{ this.text }} - by {{ this.user.username }}</li>
       {{/each}}
     </ul>
+
+    {{#if loggedInUser}}
+    <!-- Form to submit comments -->
+    <form id="commentForm">
+      <div class="form-group">
+        <label for="commentText">Leave a Comment:</label>
+        <textarea id="commentText" rows="4" cols="50" required></textarea>
+      </div>
+      <button type="submit">Submit Comment</button>
+    </form>
+    {{else}}
+    <p>Please <a href="/login">log in</a> to leave a comment.</p>
+    {{/if}}
   </main>
+
+
 
   <footer>
     <p>&copy; {{ year }} QuadView Blog. All rights reserved.</p>
   </footer>
 
-  <script src="/js/index.js"></script>
+  <input type="hidden" id="loggedInUser" value="{{ user.username }}">
+   <script src="/js/blogpost.js"></script>
 </body>
 </html>
