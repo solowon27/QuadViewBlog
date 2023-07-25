@@ -43,8 +43,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Routes
+// app.use(routes);
 app.use(require('./controllers/blog-routes'));
 app.use(require('./controllers/user-routes'));
+app.use(require('./controllers/comment-routes'));
+
 
 // Sync the database and start the server
 sequelize.sync({ force: false }).then(() => {
