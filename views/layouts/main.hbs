@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QuadView Blog</title>
   <link rel="stylesheet" href="/public/css/style.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-AicuVrA8TMc4TVRZXXu9MRXOVcRufJhF/k6Iz78XVRa3eL2YV/10YiBebw2Z5zeyRODgTGFiFqzoF0+soiY6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <nav>
@@ -12,8 +13,11 @@
         <li><a href="/" id="homepageLink">Home</a></li>
         <li><a href="/dashboard" id="dashboardLink">Dashboard</a></li>
         {{#if loggedIn}}
+        <!-- Show the user's name and "Logout" link when logged in -->
         <li><a href="/logout" id="logoutLink">Logout</a></li>
+        <p id="loggedInMessage">Logged in as {{username}}</p>
         {{else}}
+        <!-- Show "Login" link when not logged in -->
         <li><a href="/login" id="loginLink">Login</a></li>
         {{/if}}
       </ul>

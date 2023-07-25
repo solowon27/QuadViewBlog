@@ -1,20 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuadView Blog</title>
+  <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+  <nav>
+    <!-- Navigation links for other pages -->
+  </nav>
 
   <main>
-  
+    <h1 class="main-heading">QuadView Blog</h1>
+    <p class="description">QuadView Blog is a place where you can share your thoughts and ideas with the world.</p>
+    <p class="join-text">Sign up today to start blogging!</p>
+
+    <h2 class="featured-heading">Featured Blogs</h2>
+    <ul id="blogPosts" class="featured-list">
+      {{#each blogs}}
+      <li>
+        <a href="/blogs/{{ id }}" class="blog-link">{{ title }}</a>
+      </li>
+      {{/each}}
+    </ul>
+
     {{#unless loggedIn}}
-    <div id="signupContainer">
-      <h2>Sign Up for QuadView Blog</h2>
-      <form id="signupForm" action="/signup" method="POST">
-        <input type="text" id="signupUsername" name="username" placeholder="Username" required>
-        <input type="text" id="signupEmail" name="email" placeholder="Email" required>
-        <input type="password" id="signupPassword" name="password" placeholder="Password" required>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+      <p class="signup-text">Don't have an account? <a href="/sign-up" id="sign-upLink" class="signup-link">Sign Up</a></p>
     {{/unless}}
   </main>
 
-  <script src="/js/index.js"></script>
-  {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+  <footer>
+    <p>&copy; {{year}} QuadView Blog. All rights reserved.</p>
+  </footer>
+
+  <!-- Add your scripts and other body section content -->
+</body>
+</html>
