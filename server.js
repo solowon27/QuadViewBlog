@@ -25,11 +25,13 @@ const sess = {
 };
 app.use(session(sess));
 
-const hbs = exphbs.create({ helpers });
+// Custom handlebars helpers
+const hbs = exphbs.create({helpers});
+
 
 // Set the view engine to use Handlebars
-app.engine('hbs', exphbs({ extname: '.hbs' }));
-app.set('view engine', 'hbs');
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 // Set the views directory to point to the correct location
 app.set('views', path.join(__dirname, 'views'));
@@ -47,7 +49,6 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(require('./controllers/blog-routes'));
 app.use(require('./controllers/user-routes'));
 app.use(require('./controllers/comment-routes'));
-
 
 // Sync the database and start the server
 sequelize.sync({ force: false }).then(() => {
