@@ -61,10 +61,10 @@ router.get('/blogs/:id', async (req, res) => {
       return res.status(404).json({ message: 'Blog post not found.' });
     }
 
-    res.render('blogpost', {
+    res.render('blogpost', { 
       blog: blogPost.get({ plain: true }),
-      comments: [],
-      logged_in: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
+      username: req.session.username, 
       year: new Date().getFullYear(),
     });
   } catch (err) {
@@ -76,7 +76,7 @@ router.get('/blogs/:id', async (req, res) => {
 
 router.post('/blogs', async (req, res) => {
   try {
-    const blogPost = await Blogs.create({
+    await Blogs.create({
       title: req.body.title,
       content: req.body.content,
       creator: req.session.username, // Set the creator value
@@ -87,6 +87,7 @@ router.post('/blogs', async (req, res) => {
     res.status(500).send('Failed to create a new blog post. Please try again.');
   }
 });
+
 
 router.put('/blogs/:id', async (req, res) => {
   try {
