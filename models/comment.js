@@ -1,4 +1,3 @@
-// models/comment.js
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
@@ -20,6 +19,14 @@ Comment.init(
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
+    },
+    blogId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'blogs',
+        key: 'id', 
+      },
     },
   },
   {
