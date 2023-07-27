@@ -22,11 +22,11 @@ Comment.belongsTo(User, {
 
 // Associations between BlogPost and Comment
 Blogs.hasMany(Comment, {
-  foreignKey: 'blogs_id',
+  foreignKey: 'blog_id',
 });
 
 Comment.belongsTo(Blogs, {
-  foreignKey: 'blogs_id',
+  foreignKey: 'blog_id',
 });
 
 module.exports = { User, Blogs, Comment };
