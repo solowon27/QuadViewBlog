@@ -1,0 +1,16 @@
+<nav>
+  <ul>
+    <li><a href="/" id="homepageLink">Home</a></li>
+    <li><a href="/dashboard" id="dashboardLink">Dashboard</a></li>
+    {{#if loggedIn}}
+    <!-- Show the user's name and "Logout" button when logged in -->
+    <li>
+      <button id="logoutButton">Logout</button>
+    </li>
+    <p id="loggedInMessage">Logged in as {{username}}</p>
+    {{else}}
+    <!-- Show "Login" link when not logged in -->
+    <li><a href="/login" id="loginLink">Login</a></li>
+    {{/if}}
+  </ul>
+</nav>
