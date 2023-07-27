@@ -10,6 +10,12 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const handlebars = require('handlebars');
+
+handlebars.registerHelper('truncate', function (text, length) {
+  return text.slice(0, length);
+});
+
 // Set up sessions with cookies
 const sess = {
   secret: 'Super secret secret',
