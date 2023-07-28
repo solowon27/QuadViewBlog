@@ -11,19 +11,15 @@ const loginFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    const responseData = await response.json(); // Parse the JSON response
+
     if (response.ok) {
-      // Parse the response to get the data returned from the server
-      const data = await response.json();
-
-      // Set the user_id, username, and logged_in flag in the session
-      req.session.user_id = data.user_id;
-      req.session.username = data.username;
-      req.session.logged_in = true;
-
       // Redirect to the dashboard if login is successful
       document.location.replace('/dashboard');
     } else {
-      alert('Failed to log in.');
+      // Show the error message on the page
+      const errorMessage = responseData.message || 'Failed to log in.';
+      alert(errorMessage);
     }
   }
 };
