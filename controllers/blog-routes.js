@@ -2,16 +2,16 @@ const express = require('express');
 const router = express.Router();
 const { Blogs, User, Comment } = require('../models');
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res) => { //get all blogs and render homepage
   try {
     const blogPosts = await Blogs.findAll();
     console.log(blogPosts);
-    const blogs = blogPosts.map((blog) => blog.get({ plain: true }));
-    console.log(blogs);
+    const blogs = blogPosts.map((blog) => blog.get({ plain: true })); //serialize data so template can read it
+    // console.log(blogs);
     res.render('homepage', {
       blogs,
-      logged_in: req.session.logged_in,
-      year: new Date().getFullYear(),
+      logged_in: req.session.logged_in, //pass logged_in session variable to template
+      year: new Date().getFullYear(), //pass current year to template 
     });
   } catch (err) {
     res.status(500).json(err);
@@ -42,7 +42,7 @@ router.get('/dashboard', async (req, res) => {
   }
 });
 
-router.get('/blogs/:id', async (req, res) => {
+router.get('/blogs/:id', async (req, res) => { //get blog by id and render blogpost page
   try {
     const blogPost = await Blogs.findByPk(req.params.id, {
       include: [
@@ -62,9 +62,9 @@ router.get('/blogs/:id', async (req, res) => {
     }
 
     res.render('blogpost', {
-      blog: blogPost.get({ plain: true }),
-      loggedIn: req.session.loggedIn,
-      username: req.session.username, 
+      blog: blogPost.get({ plain: true }), //serialize data so template can read it
+      loggedIn: req.session.loggedIn, //pass logged_in session variable to template
+      username: req.session.username,  //pass username session variable to template
       year: new Date().getFullYear(),
     });
   } catch (err) {
@@ -74,14 +74,14 @@ router.get('/blogs/:id', async (req, res) => {
 });
 
 
-router.post('/blogs', async (req, res) => {
+router.post('/blogs', async (req, res) => { //create new blog post
   try {
     await Blogs.create({
-      title: req.body.title,
-      content: req.body.content,
+      title: req.body.title, // Set the title value
+      content: req.body.content, // Set the content value
       creator: req.session.username, // Set the creator value
     });
-    res.redirect('/dashboard');
+    res.redirect('/dashboard'); // Redirect to the dashboard page if successful
   } catch (error) {
     console.error(error);
     res.status(500).send('Failed to create a new blog post. Please try again.');
@@ -89,22 +89,22 @@ router.post('/blogs', async (req, res) => {
 });
 
 
-router.put('/blogs/:id', async (req, res) => {
+router.put('/blogs/:id', async (req, res) => { //update blog post by id
   try {
-    const blogPost = await Blogs.update(req.body, {
+    const blogPost = await Blogs.update(req.body, { // Update the blog post
       where: {
         id: req.params.id,
       },
     });
-    res.status(200).json(blogPost);
+    res.status(200).json(blogPost); // Respond with the updated blog post
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.delete('/blogs/:id', async (req, res) => {
+router.delete('/blogs/:id', async (req, res) => { //delete blog post by id
   try {
-    const blogPost = await Blogs.destroy({
+    const blogPost = await Blogs.destroy({ // Delete the blog post
       where: {
         id: req.params.id,
       },
