@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-});
+});    
 
 router.get('/dashboard', async (req, res) => {
   try {
@@ -61,7 +61,7 @@ router.get('/blogs/:id', async (req, res) => {
       return res.status(404).json({ message: 'Blog post not found.' });
     }
 
-    res.render('blogpost', { 
+    res.render('blogpost', {
       blog: blogPost.get({ plain: true }),
       loggedIn: req.session.loggedIn,
       username: req.session.username, 
