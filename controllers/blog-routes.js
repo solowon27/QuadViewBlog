@@ -7,7 +7,7 @@ router.get('/', async (req, res) => { //get all blogs and render homepage
     const blogPosts = await Blogs.findAll();
     console.log(blogPosts);
     const blogs = blogPosts.map((blog) => blog.get({ plain: true })); //serialize data so template can read it
-    // console.log(blogs);
+    //console.log(blogs);
     res.render('homepage', {
       blogs,
       logged_in: req.session.logged_in, //pass logged_in session variable to template
