@@ -1,0 +1,36 @@
+
+  <main>
+  <h1>Your Dashboard</h1>
+
+  <!-- Display the list of blog posts -->
+  <div id="dashboardContainer">
+    {{#if blogs.length}}
+      <h2>Existing Blog Posts</h2>
+      <ul id="blogPosts">
+        {{#each blogs}}
+          <li>
+            <a href="/blogs/{{ id }}">{{ title }}</a>
+            <button class="delete-button" data-blog-id="{{ id }}">Delete</button>
+            <a href="/edit-blog/{{ id }}" class="edit-link">Edit</a>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p>No blog posts found.</p>
+    {{/if}}
+  </div>
+    
+    <form id="newBlogForm" class="blog-form">
+      <h2>Create a New Blog Post</h2>
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+      </div>
+      <div>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required></textarea>
+      </div>
+      <button type="submit" class="submit-button">Create</button>
+    </form>
+  </main>
+  <script src="../public/js/blogpost.js"></script>

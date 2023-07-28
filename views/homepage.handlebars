@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Homepage</title>
+</head>
+<body>
+  <main>
+    <h1>QuadView Blog</h1>
+    <p>Welcome to the QuadView Blog! This is a place where you can share your thoughts and ideas with the world.</p>   
+        <h2>Featured Blog Posts</h2>  
+    <ul id="blogPosts">
+      {{#each blogs}}
+        <li>
+          <h3>{{ title }}</h3>
+          <p id="truncate">{{ truncate content 200 }}</p> <!-- Display the first 200 characters of the content -->
+          <a href="/blogs/{{ id }}">Read More</a>
+        </li>
+      {{/each}}
+    </ul>
+  </main>
+  <p>if you are not logged in, you will only see the featured blog posts</p>
+  <p>Don't have an account? <a href="/sign-up" id="sign-upLink">Sign up</a></p>
+  <script src="../public/js/blogpost.js"></script>
+</body>
+</html>
