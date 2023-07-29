@@ -30,11 +30,11 @@ Blogs.init(
     },
   },
   {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'blogs',
+    sequelize, // Link to database
+    timestamps: false, // Don't add timestamps
+    freezeTableName: true, // Don't pluralize name of database table
+    underscored: true, // Use underscores instead of camel-casing
+    modelName: 'blogs', // Set name of database table
   }
 );
 

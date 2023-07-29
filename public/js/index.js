@@ -1,14 +1,14 @@
-const loginFormHandler = async (event) => {
+const loginFormHandler = async (event) => { // Login form handler
   event.preventDefault();
 
-  const email = document.querySelector('#email-login').value.trim();
+  const email = document.querySelector('#email-login').value.trim(); // Get the email and password from the login form
   const password = document.querySelector('#password-login').value.trim();
 
-  if (email && password) {
+  if (email && password) { // Check if the email and password fields aren't empty
     const response = await fetch('/login', {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }), // Send a POST request to the server with the email and password
+      headers: { 'Content-Type': 'application/json' }, // Set the content type to JSON
     });
 
     const responseData = await response.json(); // Parse the JSON response

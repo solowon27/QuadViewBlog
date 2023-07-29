@@ -1,16 +1,18 @@
 
 <main>
+  <!-- Display the blog post title using blog.id and blog.title -->
   <h1 id="postTitle" data-blog-id="{{ blog.id }}">{{ blog.title }}</h1>
   <p id="postContent">{{ blog.content }}</p>
   <p>By: {{ blog.creator }}</p>
-  <p>Created: {{ blog.date }}</p>
+  <p>Created: {{ blog.date }}</p> <!--display the date the blog was created -->
 
   <h2>Comments</h2>
   <div id="commentsContainer">
+    <!-- Check if there are comments available for this blog post -->
     {{#if comments.length}}
-    <ul>
+    <ul> <!-- Loop through the comments and display each one -->
       {{#each comments}}
-      <li>
+      <li> <!-- Display each comment along with the username of the user who posted it -->
         <strong>{{ this.user.username }}</strong>: {{ this.text }}
       </li>
       {{/each}}
