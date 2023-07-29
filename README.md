@@ -64,11 +64,15 @@ User Authentication: Users can sign up and log in to the platform to create and 
 ```Responsive Design:``` The application is fully responsive and works well on different devices.
 
 # Installation
-
+```
 ```Clone the repository:``` git clone git@github.com:solowon27/QuadViewBlog.git
+
 ```Install dependencies:``` npm install
+
 ```npm run seed``` then
+
 ```Run the application:``` npm start
+```
 
 # Usage
 
@@ -89,6 +93,17 @@ HTML
 CSS
 JavaScript
 ```
+
+# Examples 
+
+The following screenshoots show basic HTTP requests in insomnia and you can also see more images inside Assets folder:
+
+![HTTP GET Request for * index](./Assets/homepage.jpg)
+![HTTP GET Request for * index](./Assets/dashboard.jpg)
+![HTTP GET Request for * index](./Assets/login.jpg)
+![HTTP GET Request for * index](./Assets/signup.jpg)
+![HTTP GET Request for * index](./Assets/blog-with-comment.jpg)
+![HTTP GET Request for * index](./Assets/blog-with-no-comment.jpg)
 
 # Contributing
 If you would like to contribute to QuadView Blog, please follow these steps:
